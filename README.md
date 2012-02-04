@@ -13,6 +13,9 @@ This library eases the creation of static maps by generating the URLs for Google
 
     <img src="<?php echo $map ?> />
 
+![Google Map](http://maps.googleapis.com/maps/api/staticmap?sensor=false&center=nantes&size=512x512&zoom=8)
+
+
 Using Points and markers
 ------------------------
 
@@ -27,7 +30,7 @@ Markers are created using a *MarkerCollection* instance. Each instance can manag
     $collection->label = '1';
     $collection->size  = Api\MarkerCollection::SIZE_SMALL;
     $collection->shadow = false;
-    $collection->markers = array('Paris', new Api\Point(47.93845, -3.254653));
+    $collection->markers = array('nantes', new Api\Point(47.93845, -3.254653));
 
     $map->markers[] = $collection;
 
@@ -48,7 +51,7 @@ Map can display paths based on the order of the given points.
     $path = new Api\Path;
     $path->color = new Api\Color(0, 56, 200);
     $path->weght = 10;
-    $path->points = array(new Api\Point(47.93845, -3.254653), 'nantes', 'rue de strasbourg');
+    $path->points = array(new Api\Point(47.93845, -3.254653), 'nantes', urlencode('rue de strasbourg'));
 
     $map->paths[] = $path;
 
